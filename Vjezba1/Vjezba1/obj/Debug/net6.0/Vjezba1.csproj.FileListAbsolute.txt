@@ -1,0 +1,15 @@
+G:\.NET MVC\Vjezba1\Vjezba1\bin\Debug\net6.0\Vjezba1.exe
+G:\.NET MVC\Vjezba1\Vjezba1\bin\Debug\net6.0\Vjezba1.deps.json
+G:\.NET MVC\Vjezba1\Vjezba1\bin\Debug\net6.0\Vjezba1.runtimeconfig.json
+G:\.NET MVC\Vjezba1\Vjezba1\bin\Debug\net6.0\Vjezba1.dll
+G:\.NET MVC\Vjezba1\Vjezba1\bin\Debug\net6.0\Vjezba1.pdb
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\Vjezba1.csproj.AssemblyReference.cache
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\Vjezba1.GeneratedMSBuildEditorConfig.editorconfig
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\Vjezba1.AssemblyInfoInputs.cache
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\Vjezba1.AssemblyInfo.cs
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\Vjezba1.csproj.CoreCompileInputs.cache
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\Vjezba1.dll
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\refint\Vjezba1.dll
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\Vjezba1.pdb
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\Vjezba1.genruntimeconfig.cache
+G:\.NET MVC\Vjezba1\Vjezba1\obj\Debug\net6.0\ref\Vjezba1.dll
