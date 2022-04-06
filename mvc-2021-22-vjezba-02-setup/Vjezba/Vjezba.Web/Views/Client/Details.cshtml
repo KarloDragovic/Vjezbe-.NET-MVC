@@ -1,0 +1,49 @@
+﻿@using Vjezba.Web.Mock
+@using System.Reflection
+@model Client
+
+<h2>Client</h2>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/Client/Index">Popis klijenata</a></li>
+    <li class="breadcrumb-item active" aria-current="page">@Model.FullName</li>
+  </ol>
+</nav>
+
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <table class="table">
+      <tbody>
+          <tr>
+              <td><strong>ID</strong></td>
+              <td>@Model.ID</td>
+            </tr>
+            <tr>
+              <td><strong>Ime i prezime</strong></td>
+              <td>@Model.FullName</td>
+            </tr>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td>@Model.Email</td>
+            </tr>
+            <tr>
+              <td><strong>Spol</strong></td>
+              <td>@Model.Gender</td>
+            </tr>
+            <tr>
+              <td><strong>Adresa</strong></td>
+              <td>@Model.Address</td>
+            </tr>
+            <tr>
+              <td><strong>Tel.</strong></td>
+              <td>@Model.PhoneNumber</td>
+            </tr>
+            <tr>
+              <td><strong>Grad</strong></td>
+              @if (Model.CityID != null) {<td>@Model.City.Name</td> }else{<td></td>}
+            </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

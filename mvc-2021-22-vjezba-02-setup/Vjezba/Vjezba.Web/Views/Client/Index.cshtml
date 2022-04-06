@@ -1,0 +1,85 @@
+﻿@using Vjezba.Web.Mock
+@model List<Client>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item" role="presentation"><a class="nav-link" data-bs-toggle="tab" href="#prvi">Zadatak 2.11</a></li>
+  <li class="nav-item" role="presentation"><a class="nav-link" data-bs-toggle="tab" href="#drugi">Zadatak 2.12</a></li>
+  <li class="nav-item" role="presentation"><a class="nav-link" data-bs-toggle="tab" href="#treci">Zadatak 2.13</a></li>
+</ul>
+
+<div class="tab-content">
+  <div role="tabpanel" id="prvi" class="tab-pane fade show active">
+    <h2>Zadatak 2.11</h2>
+
+    <form class="row g-3" method="get" action="/Client/Index">
+      <div class="col-auto">
+        <input type="text" class="form-control" id="inputStr" placeholder="Pretraži..." name="query">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-secondary mb-3">Pretraži</button>
+      </div>
+    </form>
+  </div>
+  <div id="drugi" class="tab-pane fade">
+    <h2>Zadatak 2.12</h2>
+
+    <form class="row g-3" method="post" action="/Client/Index">
+      <div class="col-auto">
+        <input type="text" class="form-control" id="inputStr" placeholder="Pretraži po imenu" name="queryName">
+      </div>
+      <div class="col-auto">
+        <input type="text" class="form-control" id="inputStr2" placeholder="Pretraži po adresi" name="queryAddress">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-secondary mb-3">Pretraži</button>
+      </div>
+    </form>
+  </div>
+  <div id="treci" class="tab-pane fade">
+    <h2>Zadatak 2.13</h2>
+
+    <form class="row g-3" method="post" action="/Client/AdvancedSearch">
+      <div class="col-auto">
+        <input type="text" class="form-control" id="inputStr" placeholder="Pretraži po imenu" name="queryName">
+      </div>
+      <div class="col-auto">
+        <input type="text" class="form-control" id="inputStr2" placeholder="Pretraži po adresi" name="queryAddress">
+      </div>
+      <div class="col-auto">
+        <input type="text" class="form-control" id="inputStr3" placeholder="Pretraži po emailu" name="queryEmail">
+      </div>
+      <div class="col-auto">
+        <input type="text" class="form-control" id="inputStr4" placeholder="Pretraži po gradu" name="queryCity">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-secondary mb-3">Pretraži</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="alert alert-primary" role="alert">
+      <p>U sustavu postoji @Model.Count klijenata.</p><br />
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Client</th>
+          <th scope="col">Address</th>
+          <th scope="col">Email</th>
+          <th scope="col">City</th>
+        </tr>
+      </thead>
+      <tbody>
+            @foreach (Client c in Model)
+            {
+               <tr>
+                  <td><a asp-area="" asp-controller="Client" asp-action="Details" asp-route-id="@c.ID">@c.FullName</a></td>
+                  <td>@c.Address</td>
+                  <td>@c.Email</td>
+                  @if (c.CityID != null) {<td>@c.City.Name</td> }else{<td></td>}
+                </tr> 
+            }
+      </tbody>
+    </table>

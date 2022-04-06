@@ -1,0 +1,35 @@
+﻿@model List<FAQViewModel>
+
+<h1>FAQ</h1><br />
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    @{
+        foreach (FAQViewModel faq in Model)
+        {
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-heading-@faq.Id">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse-@faq.Id" aria-expanded="false" aria-controls="panelsStayOpen-collapse-@faq.Id">
+                        @faq.Question
+                    </button>
+                </h2>
+
+            @{if (@faq.Id == @ViewBag.SelectedQuestion)
+            {
+                <div id="panelsStayOpen-collapse-@faq.Id" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading-@faq.Id">
+                    <div class="accordion-body">
+                        <strong>@faq.Answer</strong>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div id="panelsStayOpen-collapse-@faq.Id" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading-@faq.Id">
+                    <div class="accordion-body">
+                        <p>@faq.Answer</p>
+                    </div>
+                </div>
+            }}
+            </div>
+    }
+}
+</div>

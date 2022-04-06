@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Contact page";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Podaci koji su proslijeđeni iz controller-a: @ViewData["Message"]</p><br />
+
+
+<!-- Button trigger modal -->
+<button id="modal-toggle-button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#upitModal">
+  Kontaktirajte nas!
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="upitModal" tabindex="-1" aria-labelledby="upitModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="upitModalLabel">Kontakt forma</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/Home/SubmitQuery" id="contactForm">
+            <div class="row">
+              <div class="col-12 col-md-6 mb-3">
+                <label for="ime" class="form-label">Ime</label>
+                <input type="text" class="form-control" id="ime" name="ime" placeholder="Unesite ime">
+              </div>
+              <div class="col-12 col-md-6 mb-3">
+                <label for="prezime" class="form-label">Prezime</label>
+                <input type="text" class="form-control" id="prezime" name="prezime" placeholder="Unesite prezime">
+              </div>
+            </div>
+              <div class="col-12 mb-3">
+                <label for="Email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Unesite Email adresu">
+              </div>
+              <div class="col-12 mb-3">
+                <label for="poruka" class="form-label">Poruka</label>
+                <textarea name="poruka" form="contactForm" class="form-control" id="poruka"> </textarea>
+              </div>
+              <div class="col-12 mb-3">
+                  <label for="tipPoruke" class="form-label">Tip Poruke</label>
+                  <select id="tipPoruke" class="form-select" name="tipPoruke">
+                    <option>Pohvala</option>
+                    <option>Upit</option>
+                    <option>Poslovni prijedlog</option>
+                    <option>Žalba</option>
+                  </select>
+               </div>
+                  <div class="col-12 col-md-6 mb-3 form-check">
+                    <input value="true" type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
+                    <label class="form-check-label" for="Check">Primaj Newsletter</label>
+                  </div>
+     </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+        <button type="submit" form="contactForm" class="btn btn-primary">Pošalji upit</button>
+      </div>
+    </div>
+  </div>
+</div>
