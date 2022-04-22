@@ -1,0 +1,165 @@
+﻿@using Vjezba.Model
+@model ListClientAndClientFilterModel
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<style>
+	.tab-pane {
+		padding: 20px;
+	}
+</style>
+
+<div class="row" style="margin-top: 20px;">
+	<!-- Nav tabs -->
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+			<a class="nav-link @(ViewBag.ActiveTab == 1 ? "active" : "")" href="#z-5-5" aria-controls="z-5-5" role="tab" data-bs-toggle="tab">Zadatak 5.5</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link @(ViewBag.ActiveTab == 2 ? "active" : "")" href="#z-5-6" aria-controls="z-5-6" role="tab" data-bs-toggle="tab">Zadatak 5.6</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link @(ViewBag.ActiveTab == 3 ? "active" : "")" href="#z-5-7" aria-controls="z-5-7" role="tab" data-bs-toggle="tab">Zadatak 5.7</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link @(ViewBag.ActiveTab == 4 ? "active" : "")" href="#z-3-3" aria-controls="z-3-3" role="tab" data-bs-toggle="tab">Zadatak 3.3</a>
+		</li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content col-9">
+		<div role="tabpanel" class="tab-pane @(ViewBag.ActiveTab == 1 ? "show active" : "")" id="z-5-5">
+			<h4>Zadatak 5.5 - GET forma s jednim parametrom</h4>
+			<form action="@Url.Action("Index")" method="get">
+				<div class="row">
+					<div class="col-9">
+						<div class="form-group">
+							<input type="text" class="form-control" name="query" placeholder="Upišite željeni pojam">
+						</div>
+					</div>
+					<div class="col-3">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div role="tabpanel" class="tab-pane @(ViewBag.ActiveTab == 2 ? "show active" : "")" id="z-5-6">
+			<h4>Zadatak 5.6 - POST forma s dva parametra</h4>
+			<form action="@Url.Action("Index")" method="post">
+				<div class="row">
+					<div class="col-4">
+						<div class="form-group">
+							<input type="text" class="form-control" name="queryName" placeholder="Pretraga po imenu">
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="form-group">
+							<input type="text" class="form-control" name="queryAddress" placeholder="Pretraga po adresi">
+						</div>
+					</div>
+					<div class="col-2">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div role="tabpanel" class="tab-pane @(ViewBag.ActiveTab == 3 ? "show active" : "")" id="z-5-7">
+			<h4>Zadatak 5.7 - POST forma, binding na model</h4>
+			<form action="@Url.Action("AdvancedSearch")" method="post" class="form-inline">
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<input asp-for="ClientFilter.FullName" class="form-control" placeholder="Pretraga po imenu">
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<input asp-for="ClientFilter.Address" class="form-control" placeholder="Pretraga po adresi">
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<input asp-for="ClientFilter.Email" class="form-control" placeholder="Pretraga po e-mailu">
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<input asp-for="ClientFilter.City" class="form-control" placeholder="Pretraga po gradu">
+						</div>
+					</div>
+					<div class="col">
+						<button type="submit" class="btn btn-primary m-t-10">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div role="tabpanel" class="tab-pane @(ViewBag.ActiveTab == 4 ? "show active" : "")" id="z-3-3">
+			<h4>Zadatak 3.3 - EditFor, NameFor, asp-for</h4>
+			<form asp-action="AdvancedSearch" method="post" class="form-inline">
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							@*<input type="text" class="form-control" name="FullName" placeholder="Pretraga po imenu">*@
+							@Html.EditorFor(p => p.ClientFilter.FullName, new { htmlAttributes = new { @class="form-control", placeholder="Pretraga po imenu" }})
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							@*<input type="text" class="form-control" name="Address" placeholder="Pretraga po adresi">*@
+							@Html.TextBoxFor(p => p.ClientFilter.Address, new {@class="form-control", placeholder="Pretraga po adresi"})
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<input asp-for="ClientFilter.Email" class="form-control" placeholder="Pretraga po e-mailu">
+						</div>
+					</div>
+					<div class="col">
+						<div class="form-group">
+							<input type="text" class="form-control" name="@Html.NameFor(p => p.ClientFilter.City)" placeholder="Pretraga po gradu">
+						</div>
+					</div>
+					<div class="col">
+						<button type="submit" class="btn btn-primary m-t-10">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<div class="col-3">
+		@await Html.PartialAsync("_ClientFilter", Model.ClientFilter)
+	</div>
+	
+	@*<div class="col">
+		<partial name="_ClientFilter" model="Model.ClientFilter"/>
+	</div>	*@
+</div>
+
+<table style="margin-top: 20px;" class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Client</th>
+			<th>Address</th>
+			<th>Email</th>
+			<th>City</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Clients)
+		{
+			<tr>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.Id">@item.FullName</a>
+				</td>
+				<td>@item.Address</td>
+				<td>@item.Email</td>
+				<td>@item.City?.Name</td>
+			</tr>
+		}
+	</tbody>
+</table>

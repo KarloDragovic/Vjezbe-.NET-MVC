@@ -1,0 +1,48 @@
+﻿@using Vjezba.Model
+@model ClientFilterModel
+
+
+
+<div style="margin:20px">
+    @if (Model != null)
+	{
+		<div>
+			<h4>Client Filter</h4>
+			<hr />
+			<dl class="dl-horizontal">
+				<dt>
+					Ime i prezime
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.FullName)
+				</dd>
+				<dt>
+					Email
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Email)
+				</dd>
+				<dt>
+					Adresa
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.Address)
+				</dd>
+				<dt>
+					Grad
+				</dt>
+				<dd>
+					@Html.DisplayFor(model => model.City)
+				</dd>
+			</dl>
+		</div>
+
+	}
+	else
+	{
+		<div class="alert alert-danger">
+			Nije odabran ispravni ID klijenta.
+		</div>
+
+	}
+</div>

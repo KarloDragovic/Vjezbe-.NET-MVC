@@ -1,0 +1,58 @@
+﻿@using Vjezba.Model
+@model Tuple<List<City>, Client>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+		<li class="breadcrumb-item"><a asp-action="Index">Popis klijenata</a></li>
+		<li class="breadcrumb-item active">Unos klijenta</li>
+    </ol>
+</nav>
+
+
+
+<div style="width: 60%; margin: auto;">
+    <form asp-action="Create" method="post">
+      <div class="row mt-3">
+        <div class="form-group col-6">
+          <label for="inputName">First Name</label>
+          <input name="@nameof(Model.Item2.FirstName)" type="text" class="form-control" id="inputName" placeholder="Name">
+        </div>
+        <div class="form-group col-6">
+          <label for="inputLastName">Last Name</label>
+          <input name="@nameof(Model.Item2.LastName)" type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <label for="inputAddress">Address</label>
+        <input name="@nameof(Model.Item2.Address)" type="text" class="form-control" id="inputAddress" placeholder="1234 Main Street">
+      </div>
+      <div class="form-group mt-3">
+        <label for="inputEmail">Email</label>
+        <input name="@nameof(Model.Item2.Email)" type="email" class="form-control" id="inputEmail" placeholder="example@example.example">
+      </div>
+      <div class="row mt-3">
+        <div class="form-group col-md-4">
+          <label for="inputTelephone">Telephone</label>
+          <input name="@nameof(Model.Item2.PhoneNumber)" type="tel" class="form-control" id="inputTelephone" placeholder="012-345-6789">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputCity">City</label>
+          <select name="@nameof(Model.Item2.CityId)" id="inputCity" class="form-control">
+            @foreach(City city in Model.Item1)
+            {
+                <option value="@city.Id">@city.Name</option>        
+            }
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputGender">Gender</label>
+          <select name="@nameof(Model.Item2.Gender)" id="inputGender" class="form-control">
+            <option>M</option>
+            <option>F</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Update</button>
+    </form>
+</div>
