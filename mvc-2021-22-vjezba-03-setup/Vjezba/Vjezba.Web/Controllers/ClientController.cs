@@ -35,7 +35,8 @@ namespace Vjezba.Web.Controllers
 
                 ViewBag.Message = "Client created successfully";
             }
-            return View();
+            dynamic model = new Tuple<List<City>, Client>(_dbContext.Cities.ToList(), new Client { });
+            return View(model);
         }
         public IActionResult Index(string query = null)
         {

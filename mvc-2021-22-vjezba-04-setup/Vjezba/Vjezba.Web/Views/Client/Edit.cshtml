@@ -1,0 +1,38 @@
+﻿@model Vjezba.Model.Client
+
+@{
+	ViewData["Title"] = "Uredivanje klijenta";
+}
+
+<script
+	id="search-js"
+	defer
+	src="https://api.mapbox.com/search-js/v1.0.0-beta.9/web.js"
+	>
+</script>
+<script>        
+	const script = document.getElementById('search-js');
+	script.onload = function() {
+	mapboxsearch.autofill({
+	accessToken: 'pk.eyJ1Ijoia2RyYWdvdmljIiwiYSI6ImNsMnZ3bWNreDBnOTIzamxiMXdhMnBrOXYifQ.v9KIqd_meyRFHd1XMEFtAg'
+	});
+	};
+</script>
+
+<h2>Edit</h2>
+
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a asp-action="Index">Popis klijenata</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Novi klijent</li>
+	</ol>
+</nav>
+
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Edit">
+			<input asp-for="ID" type="hidden"/>
+			<partial name="_CreateOrEdit"/>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model Vjezba.Model.Client
+
+@{
+	ViewData["Title"] = "Dodavanje novog klijenta";
+}
+
+@section scripts{
+	<script type="text/JavaScript">
+		window.onbeforeunload = function ()
+		{
+			return "";
+		}
+	</script>
+	<script type="text/javascript">
+	$( "#Email" ).focus(function() {
+		$( this ).next( "span" ).css( "display", "inline" );
+	});
+	$( "#Email" ).blur(function() {
+	  $( this ).next( "span" ).css( "display", "none" );
+	});
+	</script>
+}
+
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a asp-action="Index">Popis klijenata</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Novi klijent</li>
+	</ol>
+</nav>
+
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<input asp-for="ID" type="hidden"/>
+			<partial name="_CreateOrEdit"/>
+		</form>
+	</div>
+</div>
+

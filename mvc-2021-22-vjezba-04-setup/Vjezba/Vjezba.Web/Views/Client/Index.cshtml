@@ -1,0 +1,62 @@
+﻿@model List<Client>
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+@section scripts{
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("table.data-table tr").css('opacity', 0.6);
+		});
+		function setFullOpacity(tr) {
+			$(tr).css('opacity', 1);
+		}
+		function setMinOpacity(tr) {
+			$(tr).css('opacity', 0.6);
+		}
+		function toggleBold(tr) {
+			$(tr).toggleClass('bold');
+		}
+	</script>
+}
+<style type="text/css">
+	tr.bold{
+		font-weight:bold;
+	}
+</style>
+
+
+<h1>Popis klijenata</h1>
+<div style="margin-top: 20px; margin-bottom: 10px;">
+	<partial name="_ClientFilter" model="new ClientFilterModel()" />
+</div>
+
+<table style="margin-top: 20px;" class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Client</th>
+			<th>Address</th>
+			<th>Email</th>
+			<th>City</th>
+			<th></th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr onmouseover="setFullOpacity(this)", onmouseout="setMinOpacity(this)" onclick="toggleBold(this)">
+				<td onclick="toggleBold(this)">
+					<a asp-action="Details" asp-route-id="@item.ID">@item.FullName</a>
+				</td>
+				<td onclick="toggleBold(this)">@item.Address</td>
+				<td onclick="toggleBold(this)">@item.Email</td>
+				<td onclick="toggleBold(this)">@item.City?.Name</td>
+				<td onclick="toggleBold(this)"> 
+					<a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

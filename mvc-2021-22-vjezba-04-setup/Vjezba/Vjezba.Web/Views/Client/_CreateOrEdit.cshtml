@@ -1,0 +1,71 @@
+﻿@model Vjezba.Model.Client
+
+<script
+	id="search-js"
+	defer
+	src="https://api.mapbox.com/search-js/v1.0.0-beta.9/web.js"
+	>
+</script>
+
+<script>        
+	const script = document.getElementById('search-js');
+	script.onload = function() {
+	mapboxsearch.autofill({
+	accessToken: 'pk.eyJ1Ijoia2RyYWdvdmljIiwiYSI6ImNsMnZ3bWNreDBnOTIzamxiMXdhMnBrOXYifQ.v9KIqd_meyRFHd1XMEFtAg'
+	});
+	};
+</script>
+
+<div class="form-group">
+	<label class="control-label">Ime</label>
+	<input asp-for="FirstName" class="form-control" />
+	<span asp-validation-for="FirstName" class="text-danger"></span>
+</div>
+<div class="form-group">
+	<label class="control-label">Prezime</label>
+	<input asp-for="LastName" class="form-control" />
+	<span asp-validation-for="LastName" class="text-danger"></span>
+</div>
+	<div class="form-group">
+	<label asp-for="Email" class="control-label"></label>
+	<input asp-for="Email" class="form-control">  <span style="display:none">example@example.example</span>
+	<span asp-validation-for="Email" class="text-danger"></span>
+</div>
+<div class="form-group">
+	<label class="control-label">Spol</label>
+	<input asp-for="Gender" class="form-control" />
+	<span asp-validation-for="Gender" class="text-danger"></span>
+</div>
+<div class="form-group">
+	<label class="control-label">Obitavalište</label>
+	<input asp-for="Address" class="form-control" autocomplete="address-line1"/>
+	<span asp-validation-for="Address" class="text-danger"></span>
+</div>
+<div class="form-group">
+	<label class="control-label">Grad</label>
+	<select asp-for="CityID" asp-items="ViewBag.PossibleCities" class="form-control"></select>
+</div>
+<div class="form-group">
+	<label class="control-label">Tel.</label>
+	<input asp-for="PhoneNumber" class="form-control" />
+	<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+</div>
+<div class="form-group">
+	
+	<label class="control-label">Datum rođenja</label>
+	<div class="input-group date" data-provide="datepicker" data-date-format="@System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToLower()">
+		<input asp-for="DateOfBirth" class="form-control" type="text"/>
+		<div class="input-group-addon">
+			<span class="glyphicon glyphicon-th"></span>
+		</div>
+	</div>
+	<span asp-validation-for="DateOfBirth" class="text-danger"></span>
+</div>
+<div class="form-group">
+	<label class="control-label">Radno iskustvo</label>
+	<input asp-for="WorkingExperience" class="form-control" />
+	<span asp-validation-for="WorkingExperience" class="text-danger"></span>
+</div>
+<div class="form-group">
+	<input type="submit" value="Spremi" class="btn btn-outline-success" />
+</div>
